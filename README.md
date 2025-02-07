@@ -1,4 +1,131 @@
-<header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Rose Day</title>
+
+  <style>
+    body {
+      background-color: pink;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    #envelope {
+      background: white;
+      width: 200px;
+      height: 150px;
+      position: relative;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    #envelope::before {
+      content: 'Open';
+      font-weight: bold;
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      color: red;
+      text-transform: uppercase;
+    }
+
+    #bouquet-container {
+      display: none;
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    #bouquet {
+      width: 150px;
+      height: auto;
+      margin: auto;
+    }
+
+    #happy-message {
+      color: red;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    #petal {
+      background-color: red;
+      color: white;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      border-radius: 50%;
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      display: none;
+      animation: fall 3s ease-in forwards;
+    }
+
+    #love-message {
+      display: none;
+      font-size: 24px;
+      color: red;
+    }
+
+    /* Petal falling animation */
+    @keyframes fall {
+      to {
+        top: 70%;
+      }
+    }
+
+    /* Bouquet animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="envelope"></div>
+
+<div id="bouquet-container">
+  <img id="bouquet" src="https://upload.wikimedia.org/wikipedia/commons/8/88/Red_roses_bouquet.jpg" alt="Bouquet of Roses">
+  <p id="happy-message">Happy Rose Day, Vicky!</p>
+  <div id="petal">Click Me</div>
+</div>
+
+<p id="love-message">I ❤️ You</p>
+
+<script>
+  // Envelope click event
+  document.getElementById('envelope').addEventListener('click', function () {
+    this.style.display = 'none';
+    document.getElementById('bouquet-container').style.display = 'block';
+    setTimeout(function () {
+      document.getElementById('petal').style.display = 'block';
+    }, 3000);
+  });
+
+  // Petal click event
+  document.getElementById('petal').addEventListener('click', function () {
+    document.getElementById('love-message').style.display = 'block';
+    document.getElementById('petal').style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
 
 <!--
   <<< Author notes: Course header >>>
